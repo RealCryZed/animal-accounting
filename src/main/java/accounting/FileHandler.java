@@ -34,18 +34,19 @@ public class FileHandler {
 
         log.info("trying to open file with animals" + filename);
         try (BufferedReader reader = new BufferedReader(new FileReader(filename))) {
-            Rule rule = new Rule();
+            Rule rule;
             String line;
 
             List<RuleValue> ruleValues = new ArrayList<>();
 
             while ((line = reader.readLine()) != null) {
                 if (line.contains("ПРАВИЛО")) {
+                    log.info("Adding new Rule from the file with name: " + line.split(":")[0]);
+                    rule = new Rule();
+                    ruleValues = new ArrayList<>();
                     rule.setListOfRules(ruleValues);
                     rule.setRuleName(line.split(":")[0]);
                     listOfInstructions.add(rule);
-                    rule = new Rule();
-                    ruleValues = new ArrayList<>();
                 }
 
                 if (line.contains("=")) {
