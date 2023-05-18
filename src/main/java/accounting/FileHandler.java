@@ -3,6 +3,7 @@ package accounting;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.util.logging.Logger;
 
 public class FileHandler {
@@ -28,16 +29,30 @@ public class FileHandler {
         return animals;
     }
 
-    public static ArrayList<ArrayList<String>> getInstructionsFromFile(String filename) {
-        ArrayList<ArrayList<String>> listOfInstructions = new ArrayList<>();
+    public static ArrayList<Rule> getInstructionsFromFile(String filename) {
+        ArrayList<Rule> listOfInstructions = new ArrayList<>();
 
         log.info("trying to open file with animals" + filename);
         try (BufferedReader reader = new BufferedReader(new FileReader(filename))) {
+            Rule rule = new Rule();
             String line;
+
+            List<RuleValue> ruleValues = new ArrayList<>();
+
             while ((line = reader.readLine()) != null) {
-                String[] attributes = line.split(",");
-                ArrayList<String> tempList = new ArrayList<>(Arrays.asList(attributes));
-                listOfInstructions.add(tempList);
+                if (line.contains("ПРАВИЛО")) {
+                    rule.setListOfRules(ruleValues);
+                    rule.setRuleName(line.split(":")[0]);
+                    listOfInstructions.add(rule);
+                    rule = new Rule();
+                    ruleValues = new ArrayList<>();
+                }
+
+                if (line.contains("=")) {
+                    String[] splitString = line.trim().split("=");
+                    RuleValue ruleValue = new RuleValue(splitString[0], splitString[1]);
+                    ruleValues.add(ruleValue);
+                }
             }
         } catch (IOException e) {
             log.warning("File " + filename + " not found");
