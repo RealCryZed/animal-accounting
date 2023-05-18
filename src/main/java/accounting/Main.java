@@ -12,7 +12,7 @@ public class Main {
         ArrayList<Rule> instructions = FileHandler.getInstructionsFromFile("instructions.txt");
 
         for (Rule rule : instructions) {
-            System.out.println(rule.getRuleName() + ", " + rule.getListOfRules());
+            System.out.println(rule.getRuleName() + " - " + rule.countAnimalsByRule(animals));
         }
     }
 }
