@@ -9,8 +9,6 @@ public class Main {
 
     public static void main(String[] args) {
         ArrayList<Animal> animals = FileHandler.getAnimalsFromFile("dataset.txt");
-        for (Animal animal : animals) {
-            System.out.println(animal);
-        }
+        ArrayList<ArrayList<String>> instructions = FileHandler.getInstructionsFromFile("instructions.txt");
     }
 }
