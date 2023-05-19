@@ -17,7 +17,7 @@ public class FileHandler {
             String line;
             while ((line = reader.readLine()) != null) {
                 String[] attributes = line.split(",");
-                Animal newAnimal = new Animal(attributes[0].toUpperCase(), attributes[1].toUpperCase(), attributes[2].toUpperCase());
+                Animal newAnimal = new Animal(attributes[0], attributes[1], attributes[2]);
                 animals.add(newAnimal);
             }
         } catch (IOException e) {
@@ -39,18 +39,18 @@ public class FileHandler {
             List<Rule> ruleValues = new ArrayList<>();
 
             while ((line = reader.readLine()) != null) {
-                if (line.toUpperCase().contains("ПРАВИЛО")) {
+                if (line.contains("ПРАВИЛО")) {
                     log.info("Adding new Instruction with name: " + line.split(":")[0]);
                     rule = new Instruction();
                     ruleValues = new ArrayList<>();
                     rule.setListOfRules(ruleValues);
-                    rule.setInstructionName(line.split(":")[0].toUpperCase());
+                    rule.setInstructionName(line.split(":")[0]);
                     listOfInstructions.add(rule);
                 }
 
                 if (line.contains("=")) {
                     String[] splitString = line.trim().split("=");
-                    Rule ruleValue = new Rule(splitString[0].toUpperCase(), splitString[1].toUpperCase());
+                    Rule ruleValue = new Rule(splitString[0], splitString[1]);
                     ruleValues.add(ruleValue);
                 }
             }

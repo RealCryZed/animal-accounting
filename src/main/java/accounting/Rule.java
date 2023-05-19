@@ -18,12 +18,12 @@ public class Rule {
     }
 
     public boolean matches(Animal animal) {
-        if (ruleValue.equals("ЛЮБОЙ")) return true;
+        if (ruleValue.toUpperCase().equals("ЛЮБОЙ")) return true;
 
-        String[] valueArray = ruleValue.split("\\|");
+        String[] valueArray = ruleValue.toUpperCase().split("\\|");
         String tempValue = "";
 
-        switch (ruleType) {
+        switch (ruleType.toUpperCase()) {
             case "ВЕС":
                 tempValue = animal.getWeight();
                 break;
