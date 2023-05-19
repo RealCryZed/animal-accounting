@@ -17,7 +17,7 @@ public class AnimalsCounter {
 
     private static final Logger log = Logger.getLogger(String.valueOf(AnimalsCounter.class));
 
-    public void countAndPrint() {
+    public void printCount() {
         for (Instruction instruction : instructions) {
             log.info("Counting animals in instruction: " + instruction.getInstructionName());
             System.out.println(instruction.getInstructionName() + " - " + countAnimalsByInstruction(animals, instruction));

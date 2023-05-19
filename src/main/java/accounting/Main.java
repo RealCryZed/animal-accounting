@@ -9,6 +9,6 @@ public class Main {
         List<Instruction> instructions = FileHandler.getInstructionsFromFile("instructions.txt");
 
         AnimalsCounter animalsCounter = new AnimalsCounter(animals, instructions);
-        animalsCounter.countAndPrint();
+        animalsCounter.printCount();
     }
 }
