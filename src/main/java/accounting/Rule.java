@@ -1,27 +1,40 @@
 package accounting;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
-
-import java.util.ArrayList;
-import java.util.List;
+import lombok.NoArgsConstructor;
 
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class Rule {
 
-    private String ruleName;
-    private List<RuleValue> listOfRules;
+    private String ruleType;
+    private String ruleValue;
 
-    public int countAnimalsByRule(ArrayList<Animal> animals) {
-        int count = 0;
+    public boolean matches(Animal animal) {
+        if (ruleValue.equals("ЛЮБОЙ")) return true;
 
-        for (Animal animal : animals) {
-            boolean match = true;
-            for (RuleValue ruleValue : listOfRules) {
-                if (!ruleValue.matches(animal)) match = false;
-            }
-            if (match) count++;
+        String[] valueArray = ruleValue.split("\\|");
+        String tempValue = "";
+
+        switch (ruleType) {
+            case "ВЕС":
+                tempValue = animal.getWeight();
+                break;
+            case "РОСТ":
+                tempValue = animal.getHeight();
+                break;
+            case "ТИП":
+                tempValue = animal.getType();
+                break;
+            default: break;
         }
 
-        return count;
+        for (String element : valueArray) {
+            if (tempValue.equals(element)) return true;
+        }
+
+        return false;
     }
 }
