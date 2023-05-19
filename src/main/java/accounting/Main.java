@@ -1,6 +1,6 @@
 package accounting;
 
-import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Logger;
 
 public class Main {
@@ -8,11 +8,10 @@ public class Main {
     private static final Logger log = Logger.getLogger(String.valueOf(Main.class));
 
     public static void main(String[] args) {
-        ArrayList<Animal> animals = FileHandler.getAnimalsFromFile("dataset.txt");
-        ArrayList<Rule> instructions = FileHandler.getInstructionsFromFile("instructions.txt");
+        List<Animal> animals = FileHandler.getAnimalsFromFile("dataset.txt");
+        List<Instruction> instructions = FileHandler.getInstructionsFromFile("instructions.txt");
 
-        for (Rule rule : instructions) {
-            System.out.println(rule.getRuleName() + " - " + rule.countAnimalsByRule(animals));
-        }
+        AnimalsCounter animalsCounter = new AnimalsCounter(animals, instructions);
+        animalsCounter.countAndPrint();
     }
 }

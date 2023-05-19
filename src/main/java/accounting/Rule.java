@@ -12,6 +12,11 @@ public class Rule {
     private String ruleType;
     private String ruleValue;
 
+    @Override
+    public String toString() {
+        return ruleType + "=" + ruleValue;
+    }
+
     public boolean matches(Animal animal) {
         if (ruleValue.equals("ЛЮБОЙ")) return true;
 

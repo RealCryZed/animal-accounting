@@ -12,7 +12,7 @@ public class FileHandler {
     public static ArrayList<Animal> getAnimalsFromFile(String filename) {
         ArrayList<Animal> animals = new ArrayList<>();
 
-        log.info("trying to open file with animals" + filename);
+        log.info("Trying to open file with animals: " + filename);
         try (BufferedReader reader = new BufferedReader(new FileReader(filename))) {
             String line;
             while ((line = reader.readLine()) != null) {
@@ -28,29 +28,29 @@ public class FileHandler {
         return animals;
     }
 
-    public static ArrayList<Rule> getInstructionsFromFile(String filename) {
-        ArrayList<Rule> listOfInstructions = new ArrayList<>();
+    public static ArrayList<Instruction> getInstructionsFromFile(String filename) {
+        ArrayList<Instruction> listOfInstructions = new ArrayList<>();
 
-        log.info("trying to open file with animals" + filename);
+        log.info("Trying to open file with instructions: " + filename);
         try (BufferedReader reader = new BufferedReader(new FileReader(filename))) {
-            Rule rule;
+            Instruction rule;
             String line;
 
-            List<RuleValue> ruleValues = new ArrayList<>();
+            List<Rule> ruleValues = new ArrayList<>();
 
             while ((line = reader.readLine()) != null) {
                 if (line.contains("ПРАВИЛО")) {
-                    log.info("Adding new Rule from the file with name: " + line.split(":")[0]);
-                    rule = new Rule();
+                    log.info("Adding new Instruction with name: " + line.split(":")[0]);
+                    rule = new Instruction();
                     ruleValues = new ArrayList<>();
                     rule.setListOfRules(ruleValues);
-                    rule.setRuleName(line.split(":")[0]);
+                    rule.setInstructionName(line.split(":")[0]);
                     listOfInstructions.add(rule);
                 }
 
                 if (line.contains("=")) {
                     String[] splitString = line.trim().split("=");
-                    RuleValue ruleValue = new RuleValue(splitString[0], splitString[1]);
+                    Rule ruleValue = new Rule(splitString[0], splitString[1]);
                     ruleValues.add(ruleValue);
                 }
             }
