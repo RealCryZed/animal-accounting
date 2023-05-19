@@ -18,7 +18,7 @@ public class RuleTest {
     private Rule ruleAnyDifferentFormat;
 
     @Before
-    public void addAnimals() {
+    public void initialize() {
         animal1 = new Animal("ЛЕГКОЕ","МАЛЕНЬКОЕ","ВСЕЯДНОЕ");
         animal2 = new Animal("ТЯЖЕЛОЕ","СРЕДНЕЕ","ПЛОТОЯДНОЕ");
 
