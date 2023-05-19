@@ -20,7 +20,21 @@ public class AnimalsCounter {
     public void countAndPrint() {
         for (Instruction instruction : instructions) {
             log.info("Counting animals in instruction: " + instruction.getInstructionName());
-            System.out.println(instruction.getInstructionName() + " - " + instruction.countAnimalsByInstruction(animals));
+            System.out.println(instruction.getInstructionName() + " - " + countAnimalsByInstruction(animals, instruction));
         }
+    }
+
+    private int countAnimalsByInstruction(List<Animal> animals, Instruction instruction) {
+        int count = 0;
+
+        for (Animal animal : animals) {
+            boolean match = true;
+            for (Rule ruleValue : instruction.getListOfRules()) {
+                if (!ruleValue.matches(animal)) match = false;
+            }
+            if (match) count++;
+        }
+        log.info("Number of animals that meet the rules:" + instruction.getListOfRules() + " - " + count);
+        return count;
     }
 }
