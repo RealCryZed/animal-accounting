@@ -21,7 +21,7 @@ public class FileHandler {
     public static ArrayList<Animal> getAnimalsFromFile(String filename) {
         ArrayList<Animal> animals = new ArrayList<>();
 
-        log.info("Trying to open file with animals: " + filename);
+        log.info("Trying to open file with Animals: " + filename);
         try (BufferedReader reader = new BufferedReader(new FileReader(filename))) {
             String line;
             while ((line = reader.readLine()) != null) {
@@ -47,6 +47,7 @@ public class FileHandler {
     public static ArrayList<Instruction> getInstructionsFromFile(String filename) {
         ArrayList<Instruction> listOfInstructions = new ArrayList<>();
 
+        log.info("Trying to open file with Instructions: " + filename);
         try (BufferedReader reader = new BufferedReader(new FileReader(filename))) {
             Instruction instruction;
             String line;
