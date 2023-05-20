@@ -37,7 +37,7 @@ public class Rule {
         }
 
         for (String element : valueArray) {
-            if (tempValue.equals(element)) return true;
+            if (tempValue.toUpperCase().equals(element)) return true;
         }
 
         return false;
