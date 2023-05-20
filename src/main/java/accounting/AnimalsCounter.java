@@ -5,7 +5,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.List;
-import java.util.logging.Logger;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -15,26 +14,32 @@ public class AnimalsCounter {
     private List<Animal> animals;
     private List<Instruction> instructions;
 
-    private static final Logger log = Logger.getLogger(String.valueOf(AnimalsCounter.class));
-
+    /**
+     * Uses private method to count animals and prints the returned result in console.
+     */
     public void printCount() {
         for (Instruction instruction : instructions) {
-            log.info("Counting animals in instruction: " + instruction.getInstructionName());
             System.out.println(instruction.getInstructionName() + " - " + countAnimalsByInstruction(animals, instruction));
         }
     }
 
+    /**
+     * Method iterates through the animals, and then rule by rule. If at least one of the rules doesn't match
+     * with the animal field, it sets boolean parameter to false and not count this animal.
+     * @param animals list of all added animals
+     * @param instruction object, that contains rules
+     * @return number of animals, that fit the rules
+     */
     private int countAnimalsByInstruction(List<Animal> animals, Instruction instruction) {
         int count = 0;
 
         for (Animal animal : animals) {
             boolean match = true;
-            for (Rule ruleValue : instruction.getListOfRules()) {
-                if (!ruleValue.matches(animal)) match = false;
+            for (Rule rule : instruction.getListOfRules()) {
+                if (!rule.matches(animal)) match = false;
             }
             if (match) count++;
         }
-        log.info("Number of animals that meet the rules:" + instruction.getListOfRules() + " - " + count);
         return count;
     }
 }

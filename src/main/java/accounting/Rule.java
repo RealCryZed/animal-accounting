@@ -10,17 +10,22 @@ import lombok.NoArgsConstructor;
 public class Rule {
 
     private String ruleType;
-    private String ruleValue;
+    private String ruleName;
 
     @Override
     public String toString() {
-        return ruleType + "=" + ruleValue;
+        return ruleType + "=" + ruleName;
     }
 
+    /**
+     * If rule equals 'ЛЮБОЙ' - return true. If ruleName equals one of the animal field, then it returns true, else false
+     * @param animal
+     * @return true or false
+     */
     public boolean matches(Animal animal) {
-        if (ruleValue.toUpperCase().equals("ЛЮБОЙ")) return true;
+        if (ruleName.toUpperCase().equals("ЛЮБОЙ")) return true;
 
-        String[] valueArray = ruleValue.toUpperCase().split("\\|");
+        String[] valueArray = ruleName.toUpperCase().split("\\|");
         String tempValue = "";
 
         switch (ruleType.toUpperCase()) {
@@ -36,6 +41,7 @@ public class Rule {
             default: break;
         }
 
+        // If two or more rules are written with a '|' sign, then we go through each rule and compare it with tempValue
         for (String element : valueArray) {
             if (tempValue.toUpperCase().equals(element)) return true;
         }
