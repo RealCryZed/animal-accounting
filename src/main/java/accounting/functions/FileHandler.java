@@ -1,4 +1,8 @@
-package accounting;
+package accounting.functions;
+
+import accounting.models.Animal;
+import accounting.models.Instruction;
+import accounting.models.Rule;
 
 import java.io.*;
 import java.util.ArrayList;

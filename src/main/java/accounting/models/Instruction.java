@@ -1,4 +1,4 @@
-package accounting;
+package accounting.models;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

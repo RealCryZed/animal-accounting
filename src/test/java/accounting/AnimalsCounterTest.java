@@ -1,12 +1,15 @@
 package accounting;
 
+import accounting.functions.AnimalsCounter;
+import accounting.models.Animal;
+import accounting.models.Instruction;
+import accounting.models.Rule;
 import org.junit.Before;
 import org.junit.Test;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 

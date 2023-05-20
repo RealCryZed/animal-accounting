@@ -1,5 +1,10 @@
 package accounting;
 
+import accounting.functions.AnimalsCounter;
+import accounting.functions.FileHandler;
+import accounting.models.Animal;
+import accounting.models.Instruction;
+
 import java.util.List;
 
 

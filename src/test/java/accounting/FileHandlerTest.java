@@ -1,5 +1,6 @@
 package accounting;
 
+import accounting.functions.FileHandler;
 import org.junit.Test;
 
 import static org.junit.Assert.*;

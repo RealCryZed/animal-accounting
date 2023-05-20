@@ -1,10 +1,9 @@
 package accounting;
 
+import accounting.models.Animal;
+import accounting.models.Rule;
 import org.junit.Before;
 import org.junit.Test;
-
-import java.util.ArrayList;
-import java.util.List;
 
 import static org.junit.Assert.*;
 
