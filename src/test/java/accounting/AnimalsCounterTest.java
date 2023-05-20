@@ -39,8 +39,6 @@ public class AnimalsCounterTest {
     public void count_Equals3() throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
         Method method = AnimalsCounter.class.getDeclaredMethod("countAnimalsByInstruction", List.class, Instruction.class);
         method.setAccessible(true);
-        System.out.println(instruction + "\n" +
-                animalsCounter);
         assertEquals(3, method.invoke(animalsCounter, animalsCounter.getAnimals(), instruction));
     }
 }
