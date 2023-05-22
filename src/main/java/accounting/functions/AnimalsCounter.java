@@ -22,7 +22,7 @@ public class AnimalsCounter {
      */
     public void printCount() {
         for (Instruction instruction : instructions) {
-            System.out.println(instruction.getInstructionName() + " - " + countAnimalsByInstruction(animals, instruction));
+            System.out.println(instruction.getInstructionName() + " - " + countAnimals(animals, instruction));
         }
     }
 
@@ -33,7 +33,7 @@ public class AnimalsCounter {
      * @param instruction object, that contains rules
      * @return number of animals, that fit the rules
      */
-    private int countAnimalsByInstruction(List<Animal> animals, Instruction instruction) {
+    private int countAnimals(List<Animal> animals, Instruction instruction) {
         int count = 0;
 
         for (Animal animal : animals) {
